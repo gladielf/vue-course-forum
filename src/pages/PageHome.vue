@@ -7,10 +7,9 @@
 
 <script>
 import sourdeData from '@/data'
-import ThreadList from './ThreadList'
+import ThreadList from '@/components/ThreadList'
 console.log(sourdeData)
 export default {
-  name: 'HelloWorld',
   components: {
     ThreadList
   },
