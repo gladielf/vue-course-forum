@@ -1,31 +1,17 @@
 <template>
-<div class="col-large push-top">
-  <h1>{{thread.title}}</h1>
-    <div class="post-list">
-      <div v-for="postId in thread.posts" v-bind:key="postId.id" class="post">
-        <div class="user-info">
-          <a href="#" class="user-name">{{users[posts[postId].userId].name}}</a>
-          <a href="#">
-            <img class="avatar-large" :src="users[posts[postId].userId].avatar" alt="">
-          </a>
-          <p class="desktop-only text-small">107 posts</p>
-        </div>
-        <div class="post-content">
-          <div>
-            {{posts[postId].text}}
-          </div>
-        </div>
-        <div class="post-date text-faded">
-          {{posts[postId].publishedAt}}
-        </div>
-      </div>
-    </div>
+  <div class="col-large push-top">
+    <h1>{{thread.title}}</h1>
+    <PostList :posts="posts"/>
   </div>
 </template>
 
 <script>
   import sourdeData from '@/data'
+  import PostList from '@/components/PostList'
   export default {
+    components: {
+      PostList
+    },
     props: {
       id: {
         required: true,
@@ -34,9 +20,14 @@
     },
     data () {
       return {
-        thread: sourdeData.threads[this.id],
-        posts: sourdeData.posts,
-        users: sourdeData.users
+        thread: sourdeData.threads[this.id]
+      }
+    },
+    computed: {
+      posts () {
+        const postsId = Object.values(this.thread.posts)
+        return Object.values(sourdeData.posts)
+          .filter(post => postsId.includes(post['.key']))
       }
     }
   }
