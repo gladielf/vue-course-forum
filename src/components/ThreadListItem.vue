@@ -7,7 +7,7 @@
         </router-link>
       </p>
       <p class="text-faded text-xsmall">
-        By <a href="">{{user.name}}</a>, {{thread.publishedAt}}.
+        By <a href="">{{user.name}}</a>, <app-date :timestamp="thread.publishedAt"/>.
       </p>
     </div>
 
@@ -32,6 +32,7 @@
 
 <script>
   import sourdeData from '@/data'
+
   export default {
     props: {
       thread: {
