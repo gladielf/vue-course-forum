@@ -1,23 +1,21 @@
 <template>
   <div class="col-full">
     <h1>Welcome to the forum</h1>
-    <ForumList :forums="forums"/>
+    <CategoryList :categories="categories"/>
   </div>
 </template>
 
 <script>
 import sourdeData from '@/data'
-import ForumList from '@/components/ForumList'
+import CategoryList from '@/components/CategoryList'
 console.log(sourdeData)
 export default {
   components: {
-    ForumList
+    CategoryList
   },
   data () {
     return {
-      forums: Object.values(sourdeData.forums),
-      posts: sourdeData.posts,
-      users: sourdeData.users
+      categories: Object.values(sourdeData.categories)
     }
   }
 }
