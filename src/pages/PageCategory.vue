@@ -6,7 +6,6 @@
 </template>
 
 <script>
-  import sourdeData from '@/data'
   import CategoryListItem from '@/components/CategoryListItem'
 
   export default {
@@ -21,7 +20,7 @@
     },
     computed: {
       category () {
-        return sourdeData.categories[this.id]
+        return this.$store.state.categories[this.id]
       }
     }
   }
