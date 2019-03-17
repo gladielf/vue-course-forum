@@ -1,12 +1,14 @@
 <template>
   <div class="flex-grid">
 
-    <!-- <UserProfileCard
+    <UserProfileCard
+      v-if="!edit"
       :user="user"
       :userPostsCount="userPostsCount"
       :userThreadsCount="userThreadsCount"
-    /> -->
+    />
     <UserProfileCardEditor
+      v-else
       :user="user"
       :userPostsCount="userPostsCount"
       :userThreadsCount="userThreadsCount"
@@ -43,6 +45,14 @@
       UserProfileCard,
       UserProfileCardEditor
     },
+
+    props: {
+      edit: {
+        type: Boolean,
+        default: false
+      }
+    },
+
     computed: {
       ...mapGetters({
         user: 'authUser'
