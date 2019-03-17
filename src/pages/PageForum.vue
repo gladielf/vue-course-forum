@@ -18,7 +18,6 @@
 </template>
 
 <script>
-  import sourdeData from '@/data'
   import ThreadList from '@/components/ThreadList'
 
   export default {
@@ -33,10 +32,10 @@
     },
     computed: {
       forum () {
-        return sourdeData.forums[this.id]
+        return this.$store.state.forums[this.id]
       },
       threads () {
-        return Object.values(sourdeData.threads)
+        return Object.values(this.$store.state.threads)
           .filter(thread => thread.forumId === this.id)
       }
     }

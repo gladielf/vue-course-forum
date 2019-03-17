@@ -30,20 +30,14 @@
     },
     methods: {
       save () {
-        const postId = `greatPost${Math.random()}`
         const post = {
           text: this.text,
-          publishedAt: Math.floor(Date.now() / 1000),
-          threadId: this.threadId,
-          userId: 'VXjpr2WHa8Ux4Bnggym8QFLdv5C3',
-          '.key': postId
+          threadId: this.threadId
         }
-        // this.$set(sourdeData.posts, postId, post)
-        // this.$set(this.thread.posts, postId, postId)
-        // this.$set(sourdeData.users[post.userId].posts, postId, postId)
         this.text = ''
 
         this.$emit('save', {post})
+        this.$store.dispatch('createPost', post)
       }
     }
   }
