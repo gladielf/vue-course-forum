@@ -6,12 +6,12 @@
     <form @submit.prevent="save">
       <div class="form-group">
         <label for="thread_title">Title:</label>
-        <input v-bind="title" type="text" id="thread_title" class="form-input" name="title">
+        <input v-model="title" type="text" id="thread_title" class="form-input" name="title">
       </div>
 
       <div class="form-group">
         <label for="thread_content">Content:</label>
-        <textarea v-bind="text" id="thread_content" class="form-input" name="content" rows="8" cols="140"></textarea>
+        <textarea v-model="text" id="thread_content" class="form-input" name="content" rows="8" cols="140"></textarea>
       </div>
 
       <div class="btn-group">
@@ -31,15 +31,15 @@
       }
     },
 
-    data() {
+    data () {
       return {
         title: '',
         text: ''
-      };
+      }
     },
 
     methods: {
-      save() {
+      save () {
         this.$store.dispatch('createThread', {
           forumId: this.forum['.key'],
           title: this.title,
