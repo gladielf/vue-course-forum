@@ -5,6 +5,7 @@
       <a href="#">
         <img class="avatar-large" :src="user.avatar" alt="">
       </a>
+      <p class="desktop-only text-small">{{userThreadsCount}} threads</p>
       <p class="desktop-only text-small">{{userPostsCount}} posts</p>
     </div>
     <div class="post-content">
@@ -53,6 +54,9 @@
       },
       userPostsCount () {
         return this.$store.getters.userPostCount(this.post.userId)
+      },
+      userThreadsCount () {
+        return this.$store.getters.userThreadsCount(this.post.userId)
       }
     }
   }
